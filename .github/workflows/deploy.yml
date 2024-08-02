@@ -40,11 +40,11 @@ jobs:
 
       - name: Deploy to GitHub Pages
         env:
-          GH_TOKEN: ${{ GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           cd public/
           git init
           git add -A
           git commit -m "Create by workflows"
-          git remote add origin https://${{ GH_TOKEN }}@github.com/Forever1021/Yinfar.git
+          git remote add origin https://${{ secrets.GH_TOKEN }}@github.com/Forever1021/Yinfar.git
           git push origin HEAD:gh-pages -f
