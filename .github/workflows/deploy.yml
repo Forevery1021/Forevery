@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        #- name: Checkout repository
-        #uses: actions/checkout@v2
-        #with:
-        #submodules: false  # 禁用子模块检查
-        #uses: actions/setup-node@v2
-        #with:
-        # node-version: '16.0'
+        - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+        submodules: false  # 禁用子模块检查
+        uses: actions/setup-node@v2
+        with:
+        node-version: '20'
 
       - name: Install Dependencies
         run: npm install
