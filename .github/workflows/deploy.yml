@@ -3,22 +3,21 @@ name: Deploy Hexo to GitHub Pages
 on:
   push:
     branches:
-      - main  # 当推送到 main 分支时触发
+      - master  # 当推送到 main 分支时触发
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          submodules: false  # 禁用子模块检查
+        #- name: Checkout repository
+        #uses: actions/checkout@v2
+        #with:
+        #submodules: false  # 禁用子模块检查
+        #uses: actions/setup-node@v2
+        #with:
+        # node-version: '16.0'
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
 
       - name: Install Dependencies
         run: npm install
@@ -36,7 +35,8 @@ jobs:
       - name: Configure Git
         run: |
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@1534852229.noreply.github.com'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
       - name: Deploy to GitHub Pages
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -45,5 +45,5 @@ jobs:
           git init
           git add -A
           git commit -m "Create by workflows"
-          git remote add origin https://${{ secrets.GH_TOKEN }}@github.com/yourusername/your-repo.git
+          git remote add origin https://${{ secrets.GH_TOKEN }}@github.com/Forever1021/Yinfar.git
           git push origin HEAD:gh-pages -f
